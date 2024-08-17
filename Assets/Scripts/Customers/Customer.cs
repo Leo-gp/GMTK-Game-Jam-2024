@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    [SerializeField] private float _walkSpeed;
-    [SerializeField] private float _despawnCustomerPointOnX = 11f;
+    [SerializeField] private CustomerConfiguration customerConfiguration;
+    [SerializeField] private float despawnCustomerPointOnX = 11f;
 
     private void Start()
     {
@@ -14,9 +14,9 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.right * (_walkSpeed * Time.deltaTime));
+        transform.Translate(Vector2.right * (customerConfiguration.WalkSpeed * Time.deltaTime));
 
-        if (transform.localPosition.x > _despawnCustomerPointOnX)
+        if (transform.localPosition.x > despawnCustomerPointOnX)
         {
             gameObject.SetActive(false);
         }

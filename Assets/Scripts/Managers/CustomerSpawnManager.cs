@@ -4,35 +4,34 @@ using UnityEngine;
 
 public class CustomerSpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _customersList;
-    [SerializeField] private float _spawnFrequencyTime;
-    [SerializeField] private float _spawnCustomerHeight = -3.33f;
+    [SerializeField] private GameObject[] customersList;
+    [SerializeField] private CustomerConfiguration customerConfiguration;
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnCustomer), _spawnFrequencyTime, _spawnFrequencyTime);    
+        InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime, customerConfiguration.SpawnFrequencyTime);    
     }
 
     private void SpawnCustomer()
     {
         int attempts = 0; // Avoid infinty loop
 
-        while (attempts < _customersList.Length)
+        while (attempts < customersList.Length)
         {
-            int randomIndex = Random.Range(0, _customersList.Length);
-            GameObject customer = _customersList[randomIndex];
+            int randomIndex = Random.Range(0, customersList.Length);
+            GameObject customer = customersList[randomIndex];
 
             if (!customer.activeInHierarchy)
             {
                 customer.SetActive(true);
-                customer.transform.localPosition = new(customer.transform.localPosition.x, _spawnCustomerHeight);
+                customer.transform.localPosition = new(customer.transform.localPosition.x, customerConfiguration.SpawnCustomerHeightPositionOnScreen);
                 break;
             }
 
             attempts++;
         }
 
-        if (attempts >= _customersList.Length)
+        if (attempts >= customersList.Length)
         {
             Debug.LogWarning("All customers are active.");
         }

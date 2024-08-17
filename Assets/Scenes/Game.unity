@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &131585047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -266,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &151642014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed82453926363de4dba9184135a91a48, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &238403543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f373e89196c4f5846aafde4d0a0b18f9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -526,8 +526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &501471231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -820,8 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &794424043
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -842,7 +842,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d88fb19efa53d9544966fba14bedbd3f, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1077,8 +1077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &1225215121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1176,8 +1176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &1364819709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1198,7 +1198,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f373e89196c4f5846aafde4d0a0b18f9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7c80829988e264199b5a66a062f1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customersList:
+  customersList:
   - {fileID: 131585044}
   - {fileID: 501471228}
   - {fileID: 1225215118}
@@ -1285,8 +1285,7 @@ MonoBehaviour:
   - {fileID: 2142507261}
   - {fileID: 1656446905}
   - {fileID: 794424040}
-  _spawnFrequencyTime: 3
-  _spawnCustomerHeight: -3.33
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
 --- !u!1 &1656446905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,8 +1331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &1656446908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1354,7 +1353,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d88fb19efa53d9544966fba14bedbd3f, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1462,8 +1461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &1772597987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1484,7 +1483,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f373e89196c4f5846aafde4d0a0b18f9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1655,8 +1654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81851713c6457bf4baac81ef5c77100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _despawnCustomerPointOnX: 11
+  customerConfiguration: {fileID: 11400000, guid: 9a339337fea921d4bbae1c28cc59fdd8, type: 2}
+  despawnCustomerPointOnX: 11
 --- !u!212 &2142507264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1677,7 +1676,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed82453926363de4dba9184135a91a48, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
