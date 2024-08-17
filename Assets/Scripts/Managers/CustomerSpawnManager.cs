@@ -25,6 +25,8 @@ public class CustomerSpawnManager : MonoBehaviour
             {
                 customer.SetActive(true);
                 customer.transform.localPosition = new(customer.transform.localPosition.x, customerConfiguration.SpawnCustomerHeightPositionOnScreen);
+
+                Debug.Log(customer.gameObject + " - transform: " + customer.transform.position);
                 break;
             }
 

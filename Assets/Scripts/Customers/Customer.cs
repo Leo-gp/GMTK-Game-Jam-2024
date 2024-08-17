@@ -21,4 +21,9 @@ public class Customer : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    private void OnDisable()
+    {
+        transform.position = new(-10f, transform.position.y);
+    }
 }
