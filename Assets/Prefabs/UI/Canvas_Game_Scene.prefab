@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1320833699068147529}
   - component: {fileID: 5568695091625808456}
   - component: {fileID: 5253968319412831794}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas_Game_Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 140631256785704010}
     m_Modifications:
+    - target: {fileID: 412333753014124459, guid: 07d876af7173cc341a745660b0f2b4e5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1300881447413897088, guid: 07d876af7173cc341a745660b0f2b4e5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1047,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 7059469834849788882, guid: 3f8afe042df433c499a580a5c5a8dd9f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092103602570393402, guid: 3f8afe042df433c499a580a5c5a8dd9f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7390097937683662412, guid: 3f8afe042df433c499a580a5c5a8dd9f, type: 3}
       propertyPath: m_AnchorMax.y
