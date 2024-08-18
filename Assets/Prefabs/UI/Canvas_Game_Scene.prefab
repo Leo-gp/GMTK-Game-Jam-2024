@@ -1072,7 +1072,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3227730342312437672}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2644,7 +2644,7 @@ GameObject:
   - component: {fileID: 5568695091625808456}
   - component: {fileID: 5253968319412831794}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Canvas_Game_Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
