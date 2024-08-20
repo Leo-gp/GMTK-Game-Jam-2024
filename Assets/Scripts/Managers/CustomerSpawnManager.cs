@@ -9,8 +9,12 @@ public class CustomerSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime, customerConfiguration.SpawnFrequencyTime);
 
+    }
+
+    public void CallSpawnCustomer()
+    {
+        InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime, customerConfiguration.SpawnFrequencyTime);
     }
 
     private void SpawnCustomer()
