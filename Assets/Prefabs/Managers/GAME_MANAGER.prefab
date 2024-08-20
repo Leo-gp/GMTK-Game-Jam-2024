@@ -44,6 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638024ef4f3c08946a04768d9b4f8264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayText: {fileID: 0}
-  pauseButton: 60
-  pauseMenu: {fileID: 0}
+  shortKey: 27
