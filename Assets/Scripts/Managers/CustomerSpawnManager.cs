@@ -7,11 +7,6 @@ public class CustomerSpawnManager : MonoBehaviour
     [SerializeField] private Customer[] customersList;
     [SerializeField] private CustomerConfiguration customerConfiguration;
 
-    private void Start()
-    {
-
-    }
-
     public void CallSpawnCustomer()
     {
         InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime, customerConfiguration.SpawnFrequencyTime);
