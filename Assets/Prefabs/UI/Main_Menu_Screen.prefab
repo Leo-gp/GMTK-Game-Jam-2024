@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b78208cd7402be489c03c0fb1f01253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuScreenCanvasGroups: {fileID: 3926588522331035141}
 --- !u!222 &8312904536186362098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -846,7 +845,6 @@ GameObject:
   m_Component:
   - component: {fileID: 421893336686555703}
   - component: {fileID: 8727820810147416846}
-  - component: {fileID: 3926588522331035141}
   m_Layer: 5
   m_Name: Main_Menu_Screen
   m_TagString: Untagged
@@ -887,18 +885,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3926588522331035141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4007275550513687141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21f5e94653173641b099b1ff3cf87f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4518867697853478672
 GameObject:
   m_ObjectHideFlags: 0
