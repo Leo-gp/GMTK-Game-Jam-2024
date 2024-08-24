@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Product : MonoBehaviour, IDragHandler, IEndDragHandler
+public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] private ProductGrid productGrid;
     [SerializeField] private ProductTile[] productTiles;
@@ -11,12 +11,13 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler
     private readonly Dictionary<ProductTile, GridCell> _placeableCellsAux = new();
 
     private bool _isPurchased;
+    private bool _isDragging;
 
     public Dictionary<ProductTile, GridCell> PlaceableCells { get; } = new();
 
-    public void OnDrag(PointerEventData eventData)
+    private void Update()
     {
-        if (_isPurchased)
+        if (!_isDragging || !IsInteractable())
         {
             return;
         }
@@ -35,18 +36,38 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler
         UpdatePlaceableCells();
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        if (_isPurchased || PlaceableCells.Count is 0)
+        if (_isDragging || !IsInteractable())
         {
             return;
         }
-        productGrid.PlaceProduct(this);
-        foreach (var gridCell in PlaceableCells.Values)
+        _isDragging = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (!_isDragging || !IsInteractable())
         {
-            gridCell.Unhighlight();
+            return;
         }
-        _isPurchased = true;
+        Drop();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsInteractable())
+        {
+            return;
+        }
+        if (_isDragging)
+        {
+            Drop();
+        }
+        else
+        {
+            _isDragging = true;
+        }
     }
 
     private void UpdatePlaceableCells()
@@ -65,5 +86,25 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler
             PlaceableCells.Add(productTile, gridCell);
             gridCell.Highlight();
         }
+    }
+
+    private void Drop()
+    {
+        _isDragging = false;
+        if (PlaceableCells.Count is 0)
+        {
+            return;
+        }
+        productGrid.PlaceProduct(this);
+        foreach (var gridCell in PlaceableCells.Values)
+        {
+            gridCell.Unhighlight();
+        }
+        _isPurchased = true;
+    }
+
+    private bool IsInteractable()
+    {
+        return !GameManager.Instance.IsPaused && !_isPurchased;
     }
 }
