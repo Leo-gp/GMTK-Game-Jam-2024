@@ -1,16 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public event Action<GameManager> OnPauseKeyPress;
-
     [SerializeField] private KeyCode shortKey;
 
-    [SerializeField] public bool IsPaused { get; private set; } = false;
+    public bool IsPaused { get; private set; }
 
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -20,6 +27,8 @@ public class GameManager : MonoBehaviour
             OnPauseKeyPress?.Invoke(this);
         }
     }
+
+    public event Action<GameManager> OnPauseKeyPress;
 
     public void TogglePause()
     {
