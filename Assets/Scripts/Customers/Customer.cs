@@ -7,6 +7,7 @@ public class Customer : MonoBehaviour
     [SerializeField] private CustomerConfiguration customerConfiguration;
     [SerializeField] private float despawnCustomerPointOnX = 11f;
 
+
     private void Start()
     {
         gameObject.SetActive(false);
