@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4054441654516891780, guid: cd070dbdb14d6474f8d6dff372d48347, type: 3}
+      propertyPath: graphicRaycaster
+      value: 
+      objectReference: {fileID: 5749264814728709730}
     - target: {fileID: 7320760117090545090, guid: cd070dbdb14d6474f8d6dff372d48347, type: 3}
       propertyPath: m_Name
       value: ProductGrid

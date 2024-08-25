@@ -5,19 +5,18 @@ using UnityEngine.EventSystems;
 
 public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [SerializeField] private ProductGrid productGrid;
     [SerializeField] private ProductTile[] productTiles;
+    [SerializeField] private ProductCategory category;
 
     private readonly Dictionary<ProductTile, GridCell> _placeableCellsAux = new();
 
-    private bool _isPurchased;
     private bool _isDragging;
 
     public Dictionary<ProductTile, GridCell> PlaceableCells { get; } = new();
 
     private void Update()
     {
-        if (!_isDragging || !IsInteractable())
+        if (!_isDragging || GameManager.Instance.IsPaused)
         {
             return;
         }
@@ -38,7 +37,7 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_isDragging || !IsInteractable())
+        if (_isDragging || GameManager.Instance.IsPaused)
         {
             return;
         }
@@ -47,7 +46,7 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!_isDragging || !IsInteractable())
+        if (!_isDragging || GameManager.Instance.IsPaused)
         {
             return;
         }
@@ -56,7 +55,7 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsInteractable())
+        if (GameManager.Instance.IsPaused)
         {
             return;
         }
@@ -93,18 +92,27 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         _isDragging = false;
         if (PlaceableCells.Count is 0)
         {
+            ResetPosition();
             return;
         }
-        productGrid.PlaceProduct(this);
+        ProductGrid.Instance.PlaceProduct(this);
         foreach (var gridCell in PlaceableCells.Values)
         {
             gridCell.Unhighlight();
         }
-        _isPurchased = true;
+        DisableRaycastTarget();
     }
 
-    private bool IsInteractable()
+    private void ResetPosition()
     {
-        return !GameManager.Instance.IsPaused && !_isPurchased;
+        transform.localPosition = Vector3.zero;
+    }
+
+    private void DisableRaycastTarget()
+    {
+        foreach (var productTile in productTiles)
+        {
+            productTile.DisableRaycastTarget();
+        }
     }
 }
