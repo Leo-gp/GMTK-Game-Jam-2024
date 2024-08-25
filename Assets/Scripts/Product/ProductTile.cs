@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ProductTile : MonoBehaviour
 {
-    [SerializeField] private GraphicRaycaster gridGraphicRaycaster;
+    [SerializeField] private Image image;
 
     public Vector3 OriginalLocalPosition { get; private set; }
 
@@ -21,7 +21,7 @@ public class ProductTile : MonoBehaviour
             position = transform.position
         };
         var raycastResults = new List<RaycastResult>();
-        gridGraphicRaycaster.Raycast(pointerEventData, raycastResults);
+        ProductGrid.Instance.GraphicRaycaster.Raycast(pointerEventData, raycastResults);
         foreach (var raycastResult in raycastResults)
         {
             if (raycastResult.gameObject.TryGetComponent<GridCell>(out var gridCell))
@@ -30,5 +30,10 @@ public class ProductTile : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void DisableRaycastTarget()
+    {
+        image.raycastTarget = false;
     }
 }

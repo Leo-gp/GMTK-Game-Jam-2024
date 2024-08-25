@@ -7,6 +7,21 @@ public class ProductGrid : MonoBehaviour
     [SerializeField] private GridLayoutGroup gridLayoutGroup;
     [SerializeField] private GridCell gridCellPrefab;
     [SerializeField] private ProductGridConfiguration productGridConfiguration;
+    [SerializeField] private GraphicRaycaster graphicRaycaster;
+
+    public GraphicRaycaster GraphicRaycaster => graphicRaycaster;
+
+    public static ProductGrid Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
