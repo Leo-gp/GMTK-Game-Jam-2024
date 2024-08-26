@@ -47,7 +47,6 @@ public class ProductGrid : MonoBehaviour
     private void Initialize()
     {
         gridLayoutGroup.cellSize = productGridConfiguration.CellSize;
-        gridLayoutGroup.spacing = productGridConfiguration.CellGap;
         gridLayoutGroup.constraintCount = productGridConfiguration.GridSize.y;
         for (var y = 0; y < productGridConfiguration.GridSize.y; y++)
         {

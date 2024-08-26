@@ -8,11 +8,18 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
     [SerializeField] private ProductTile[] productTiles;
     [SerializeField] private ProductCategory category;
 
-    private readonly Dictionary<ProductTile, GridCell> _placeableCellsAux = new();
-
     private bool _isDragging;
+    private Dictionary<ProductTile, GridCell> _placeableCellsAux;
 
-    public Dictionary<ProductTile, GridCell> PlaceableCells { get; } = new();
+    public Dictionary<ProductTile, GridCell> PlaceableCells { get; private set; }
+
+    private void Start()
+    {
+        _isDragging = false;
+        _placeableCellsAux = new Dictionary<ProductTile, GridCell>();
+        PlaceableCells = new Dictionary<ProductTile, GridCell>();
+        EnableRaycastTarget();
+    }
 
     private void Update()
     {
@@ -95,17 +102,31 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
             ResetPosition();
             return;
         }
+        Purchase();
+    }
+
+    private void ResetPosition()
+    {
+        transform.localPosition = Vector3.zero;
+    }
+
+    private void Purchase()
+    {
         ProductGrid.Instance.PlaceProduct(this);
         foreach (var gridCell in PlaceableCells.Values)
         {
             gridCell.Unhighlight();
         }
         DisableRaycastTarget();
+        Restock();
     }
 
-    private void ResetPosition()
+    private void EnableRaycastTarget()
     {
-        transform.localPosition = Vector3.zero;
+        foreach (var productTile in productTiles)
+        {
+            productTile.EnableRaycastTarget();
+        }
     }
 
     private void DisableRaycastTarget()
@@ -114,5 +135,13 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         {
             productTile.DisableRaycastTarget();
         }
+    }
+
+    private void Restock()
+    {
+        var newProduct = Instantiate(gameObject, transform.parent);
+        transform.SetParent(ProductGrid.Instance.transform.parent);
+        newProduct.transform.localPosition = Vector3.zero;
+        newProduct.name = name;
     }
 }

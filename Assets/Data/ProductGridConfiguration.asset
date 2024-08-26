@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad15b60ecba447a9dd2ebebafe37db7, type: 3}
   m_Name: ProductGridConfiguration
   m_EditorClassIdentifier: 
-  gridSize: {x: 4, y: 8}
-  cellGap: {x: 0, y: 0}
+  gridSize: {x: 6, y: 8}
   cellSize: {x: 75, y: 75}

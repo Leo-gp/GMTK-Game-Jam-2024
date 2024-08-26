@@ -32,6 +32,11 @@ public class ProductTile : MonoBehaviour
         return null;
     }
 
+    public void EnableRaycastTarget()
+    {
+        image.raycastTarget = true;
+    }
+
     public void DisableRaycastTarget()
     {
         image.raycastTarget = false;
