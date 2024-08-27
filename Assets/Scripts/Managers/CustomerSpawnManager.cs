@@ -22,6 +22,7 @@ public class CustomerSpawnManager : MonoBehaviour
             {
                 customer.SetActive(true);
                 customer.transform.localPosition = new(customer.transform.localPosition.x, customerConfiguration.SpawnCustomerHeightPositionOnScreen);
+                customer.GetComponent<Customer>().ReserveProduct();
 
                 return;
             }

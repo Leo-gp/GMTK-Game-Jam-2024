@@ -15,3 +15,5 @@ MonoBehaviour:
   walkSpeed: 3
   spawnFrequencyTime: 3
   spawnCustomerHeightPositionOnScreen: -3.33
+  desiredCategory: 0
+  customerColor: {r: 1, g: 0, b: 0, a: 1}

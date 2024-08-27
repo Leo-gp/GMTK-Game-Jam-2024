@@ -11,6 +11,9 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
     private bool _isDragging;
     private Dictionary<ProductTile, GridCell> _placeableCellsAux;
 
+    public bool _isSelled = false;
+    public Vector3 WorldPosition;
+    
     public Dictionary<ProductTile, GridCell> PlaceableCells { get; private set; }
 
     private void Start()
@@ -40,6 +43,12 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
             _placeableCellsAux.Add(productTile, gridCellHit);
         }
         UpdatePlaceableCells();
+    }
+
+    private void GetProductInfo()
+    {
+        Vector3 screePosition = GetComponent<RectTransform>().position;
+        WorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screePosition.x, screePosition.y, Camera.main.nearClipPlane));
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -102,6 +111,8 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
             ResetPosition();
             return;
         }
+        _isPurchasedByPlayer = true;
+        GetProductInfo();
         Purchase();
     }
 
@@ -143,5 +154,10 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         transform.SetParent(ProductGrid.Instance.transform.parent);
         newProduct.transform.localPosition = Vector3.zero;
         newProduct.name = name;
+    }
+    
+    private bool IsInteractable()
+    {
+        return !GameManager.Instance.IsPaused && !_isPurchasedByPlayer;
     }
 }
