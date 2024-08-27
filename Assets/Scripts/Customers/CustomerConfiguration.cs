@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CustomerConfiguration : ScriptableObject
 {
-    public enum Categories
+    public enum CustomerCategories
     {
         Surrealism,
         Cubism,
@@ -17,14 +17,16 @@ public class CustomerConfiguration : ScriptableObject
     [SerializeField] private float walkSpeed;
     [SerializeField] private float spawnFrequencyTime;
     [SerializeField] private float spawnCustomerHeightPositionOnScreen = -3.33f;
-    [SerializeField] private Categories desiredCategory;
+    [SerializeField] private CustomerCategories desiredCategory;
+    [SerializeField] private Color customerColor;
 
 
+    public Color CustomerColor => customerColor;
     public float WalkSpeed => walkSpeed;
     public float SpawnFrequencyTime => spawnFrequencyTime;
     public float SpawnCustomerHeightPositionOnScreen => spawnCustomerHeightPositionOnScreen;
 
-    public Categories DesiredCategory => desiredCategory;
+    public CustomerCategories DesiredCategory => desiredCategory;
 
 }
 

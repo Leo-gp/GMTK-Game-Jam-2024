@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf9cd38a564ff344a126b24380800eb, type: 3}
-  m_Name: CustomerConfigurationImpressionism
+  m_Script: {fileID: 11500000, guid: 4a56a9a97964f114cbd78afa48db1a40, type: 3}
+  m_Name: ProductDataCubism
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  spawnFrequencyTime: 3
-  spawnCustomerHeightPositionOnScreen: -3.33
-  desiredCategory: 2
-  customerColor: {r: 1, g: 1, b: 0, a: 1}
+  price: 10
+  category: 1
