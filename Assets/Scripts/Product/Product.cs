@@ -9,16 +9,22 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
     [SerializeField] private ProductCategory category;
 
     private bool _isDragging;
+    private Transform _targetToFollow;
     private Dictionary<ProductTile, GridCell> _placeableCellsAux;
 
-    public bool _isSelled = false;
-    public Vector3 WorldPosition;
-    
     public Dictionary<ProductTile, GridCell> PlaceableCells { get; private set; }
+
+    public bool IsReserved { get; set; }
+
+    public ProductCategory Category => category;
+
+    public Vector2 WorldPosition => CameraManager.Instance.Camera.ScreenToWorldPoint(transform.position);
 
     private void Start()
     {
         _isDragging = false;
+        _targetToFollow = null;
+        IsReserved = false;
         _placeableCellsAux = new Dictionary<ProductTile, GridCell>();
         PlaceableCells = new Dictionary<ProductTile, GridCell>();
         EnableRaycastTarget();
@@ -26,29 +32,18 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
 
     private void Update()
     {
-        if (!_isDragging || GameManager.Instance.IsPaused)
+        if (GameManager.Instance.IsPaused)
         {
             return;
         }
-        transform.position = Input.mousePosition;
-        _placeableCellsAux.Clear();
-        foreach (var productTile in productTiles)
+        if (!IsReserved && _isDragging)
         {
-            var gridCellHit = productTile.GetGridCellHitAtCenter();
-            if (gridCellHit is null || gridCellHit.AttachedProductTile is not null)
-            {
-                _placeableCellsAux.Clear();
-                break;
-            }
-            _placeableCellsAux.Add(productTile, gridCellHit);
+            UpdateDrag();
         }
-        UpdatePlaceableCells();
-    }
-
-    private void GetProductInfo()
-    {
-        Vector3 screePosition = GetComponent<RectTransform>().position;
-        WorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screePosition.x, screePosition.y, Camera.main.nearClipPlane));
+        else if (_targetToFollow is not null)
+        {
+            FollowTarget();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -85,6 +80,34 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         }
     }
 
+    public void StartFollowingTargetWorldSpace(Transform target)
+    {
+        _targetToFollow = target;
+    }
+
+    public void Deactivate()
+    {
+        IsReserved = false;
+        gameObject.SetActive(false);
+    }
+
+    private void UpdateDrag()
+    {
+        transform.position = Input.mousePosition;
+        _placeableCellsAux.Clear();
+        foreach (var productTile in productTiles)
+        {
+            var gridCellHit = productTile.GetGridCellHitAtCenter();
+            if (gridCellHit is null || gridCellHit.AttachedProductTile is not null)
+            {
+                _placeableCellsAux.Clear();
+                break;
+            }
+            _placeableCellsAux.Add(productTile, gridCellHit);
+        }
+        UpdatePlaceableCells();
+    }
+
     private void UpdatePlaceableCells()
     {
         if (PlaceableCells.SequenceEqual(_placeableCellsAux))
@@ -111,8 +134,6 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
             ResetPosition();
             return;
         }
-        _isPurchasedByPlayer = true;
-        GetProductInfo();
         Purchase();
     }
 
@@ -148,16 +169,17 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         }
     }
 
+    private void FollowTarget()
+    {
+        var targetScreenPosition = CameraManager.Instance.Camera.WorldToScreenPoint(_targetToFollow.position);
+        transform.position = targetScreenPosition;
+    }
+
     private void Restock()
     {
         var newProduct = Instantiate(gameObject, transform.parent);
         transform.SetParent(ProductGrid.Instance.transform.parent);
         newProduct.transform.localPosition = Vector3.zero;
         newProduct.name = name;
-    }
-    
-    private bool IsInteractable()
-    {
-        return !GameManager.Instance.IsPaused && !_isPurchasedByPlayer;
     }
 }
