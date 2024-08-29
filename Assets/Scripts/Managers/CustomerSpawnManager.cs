@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerSpawnManager : MonoBehaviour
@@ -9,21 +7,25 @@ public class CustomerSpawnManager : MonoBehaviour
 
     public void CallSpawnCustomer()
     {
-        InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime, customerConfiguration.SpawnFrequencyTime);
+        InvokeRepeating(nameof(SpawnCustomer), customerConfiguration.SpawnFrequencyTime,
+            customerConfiguration.SpawnFrequencyTime);
     }
 
     private void SpawnCustomer()
     {
-        for (int i = 0; i < customersList.Length; i++)
+        for (var i = 0; i < customersList.Length; i++)
         {
-            GameObject customer = customersList[i].gameObject;
+            var customer = customersList[i];
 
-            if (!customer.activeInHierarchy)
+            if (!customer.gameObject.activeInHierarchy)
             {
-                customer.SetActive(true);
-                customer.transform.localPosition = new(customer.transform.localPosition.x, customerConfiguration.SpawnCustomerHeightPositionOnScreen);
-                customer.GetComponent<Customer>().ReserveProduct();
-
+                customer.gameObject.SetActive(true);
+                customer.transform.localPosition = new Vector3
+                (
+                    customer.transform.localPosition.x,
+                    customerConfiguration.SpawnCustomerHeightPositionOnScreen
+                );
+                customer.ReserveProduct();
                 return;
             }
         }

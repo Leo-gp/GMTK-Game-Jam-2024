@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class ProductGrid : MonoBehaviour
     public GraphicRaycaster GraphicRaycaster => graphicRaycaster;
 
     public static ProductGrid Instance { get; private set; }
+
+    public List<Product> Products { get; } = new();
 
     private void Awake()
     {
@@ -42,6 +45,16 @@ public class ProductGrid : MonoBehaviour
         {
             productTile.transform.localPosition = productTile.OriginalLocalPosition;
         }
+        Products.Add(product);
+    }
+
+    public void RemoveProduct(Product product)
+    {
+        foreach (var gridCell in product.PlaceableCells.Values)
+        {
+            gridCell.AttachedProductTile = null;
+        }
+        Products.Remove(product);
     }
 
     private void Initialize()
