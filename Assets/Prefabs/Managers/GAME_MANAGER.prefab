@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4996162937070822404}
   - component: {fileID: 4886452032287701553}
+  - component: {fileID: 3435741936145209698}
+  - component: {fileID: 4624855144306520427}
   m_Layer: 0
   m_Name: GAME_MANAGER
   m_TagString: Untagged
@@ -45,3 +47,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shortKey: 27
+--- !u!114 &3435741936145209698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136017806502502681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55feeb104a624c28b1a2a714c683eaae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayManager: {fileID: 4624855144306520427}
+  customerSpawnManager: {fileID: 0}
+  shopProductsGameObject: {fileID: 0}
+--- !u!114 &4624855144306520427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136017806502502681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe9622e0d8f4d0285ed0e9a0ff27a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDayText: {fileID: 0}
