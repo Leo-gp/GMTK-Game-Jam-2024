@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf9cd38a564ff344a126b24380800eb, type: 3}
   m_Name: CustomerConfigurationCubism
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  spawnFrequencyTime: 3
+  walkSpeed: 5
+  spawnFrequencyTime: 1.75
   spawnCustomerHeightPositionOnScreen: -3.33
   desiredCategory: 1
-  customerColor: {r: 0.7058824, g: 0.23137255, b: 0, a: 1}

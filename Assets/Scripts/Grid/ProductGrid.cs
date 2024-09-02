@@ -12,6 +12,8 @@ public class ProductGrid : MonoBehaviour
 
     public GraphicRaycaster GraphicRaycaster => graphicRaycaster;
 
+    public int ColumnsCount { get; private set; }
+
     public static ProductGrid Instance { get; private set; }
 
     public List<Product> Products { get; } = new();
@@ -60,10 +62,11 @@ public class ProductGrid : MonoBehaviour
     private void Initialize()
     {
         gridLayoutGroup.cellSize = productGridConfiguration.CellSize;
-        gridLayoutGroup.constraintCount = productGridConfiguration.GridSize.y;
-        for (var y = 0; y < productGridConfiguration.GridSize.y; y++)
+        gridLayoutGroup.constraintCount = productGridConfiguration.InitialGridSize.y;
+        ColumnsCount = productGridConfiguration.InitialGridSize.x;
+        for (var y = 0; y < productGridConfiguration.InitialGridSize.y; y++)
         {
-            for (var x = 0; x < productGridConfiguration.GridSize.x; x++)
+            for (var x = 0; x < productGridConfiguration.InitialGridSize.x; x++)
             {
                 var cell = Instantiate(gridCellPrefab, transform);
                 cell.name = $"GridCell [{x}, {y}]";

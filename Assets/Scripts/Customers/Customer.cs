@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Customer : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Customer : MonoBehaviour
 
     private Product _reservedProduct;
     private bool _isCarryingProduct;
+
+    public Action LeftStore { get; set; }
 
     private void Start()
     {
@@ -73,5 +77,6 @@ public class Customer : MonoBehaviour
             _reservedProduct.Deactivate();
         }
         gameObject.SetActive(false);
+        LeftStore?.Invoke();
     }
 }
