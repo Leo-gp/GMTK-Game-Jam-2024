@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4886452032287701553}
   - component: {fileID: 3435741936145209698}
   - component: {fileID: 4624855144306520427}
+  - component: {fileID: 5841719722746314458}
   m_Layer: 0
   m_Name: GAME_MANAGER
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayManager: {fileID: 4624855144306520427}
   customerSpawnManager: {fileID: 0}
-  shopProductsGameObject: {fileID: 0}
+  shopUICanvasGameObject: {fileID: 0}
 --- !u!114 &4624855144306520427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,3 +76,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDayText: {fileID: 0}
+--- !u!114 &5841719722746314458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136017806502502681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b95aa81f785433b9c4310e1c6e0e0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyConfiguration: {fileID: 11400000, guid: 947d1a1a764836b4199dd8c3cadde634, type: 2}
+  totalMoneyText: {fileID: 0}

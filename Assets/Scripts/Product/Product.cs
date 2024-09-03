@@ -36,7 +36,7 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         {
             return;
         }
-        if (!IsReserved && _isDragging)
+        if (!IsReserved && _isDragging && MoneyManager.Instance.CanPurchaseProduct())
         {
             UpdateDrag();
         }
@@ -151,6 +151,7 @@ public class Product : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerCli
         }
         DisableRaycastTarget();
         Restock();
+        MoneyManager.Instance.PurchaseProduct();
     }
 
     private void EnableRaycastTarget()

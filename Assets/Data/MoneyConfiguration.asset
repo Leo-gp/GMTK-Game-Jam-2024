@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad15b60ecba447a9dd2ebebafe37db7, type: 3}
-  m_Name: ProductGridConfiguration
+  m_Script: {fileID: 11500000, guid: 73f649adde89454bb0e649a79843cb25, type: 3}
+  m_Name: MoneyConfiguration
   m_EditorClassIdentifier: 
-  initialGridSize: {x: 4, y: 8}
-  cellSize: {x: 75, y: 75}
+  initialMoney: 80
+  productPurchaseCost: 10
+  productSellingPrice: 20
