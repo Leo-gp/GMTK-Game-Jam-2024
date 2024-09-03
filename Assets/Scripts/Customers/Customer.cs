@@ -13,7 +13,9 @@ public class Customer : MonoBehaviour
     private Product _reservedProduct;
     private bool _isCarryingProduct;
 
-    public Action LeftStore { get; set; }
+    public Action<Customer> LeftStore { get; set; }
+
+    public bool HasBoughtProduct => _reservedProduct is not null;
 
     private void Start()
     {
@@ -72,11 +74,11 @@ public class Customer : MonoBehaviour
 
     private void Despawn()
     {
+        LeftStore?.Invoke(this);
         if (_reservedProduct is not null)
         {
             _reservedProduct.Deactivate();
         }
         gameObject.SetActive(false);
-        LeftStore?.Invoke();
     }
 }

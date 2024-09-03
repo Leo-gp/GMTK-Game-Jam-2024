@@ -13,12 +13,12 @@ public class GameStateManager : MonoBehaviour
 
     private void OnEnable()
     {
-        customerSpawnManager.AllCustomersHaveLeft += OnAllCustomersHaveLeft;
+        customerSpawnManager.AllCustomersHaveLeftStore += OnAllCustomersHaveLeft;
     }
 
     private void OnDisable()
     {
-        customerSpawnManager.AllCustomersHaveLeft -= OnAllCustomersHaveLeft;
+        customerSpawnManager.AllCustomersHaveLeftStore -= OnAllCustomersHaveLeft;
     }
 
     public void EnterSellingState()

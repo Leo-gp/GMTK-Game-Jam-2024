@@ -9,7 +9,9 @@ public class CustomerSpawnManager : MonoBehaviour
     private int _remainingCustomersToSpawn;
     private int _activeCustomersAmount;
 
-    public Action AllCustomersHaveLeft { get; set; }
+    public Action<Customer> CustomerLeftStore { get; set; }
+
+    public Action AllCustomersHaveLeftStore { get; set; }
 
     private void OnEnable()
     {
@@ -66,13 +68,14 @@ public class CustomerSpawnManager : MonoBehaviour
         Debug.LogWarning("All customers are active.");
     }
 
-    private void OnCustomerLeftStore()
+    private void OnCustomerLeftStore(Customer customer)
     {
+        CustomerLeftStore?.Invoke(customer);
         _activeCustomersAmount--;
         if (_remainingCustomersToSpawn > 0 || _activeCustomersAmount > 0)
         {
             return;
         }
-        AllCustomersHaveLeft?.Invoke();
+        AllCustomersHaveLeftStore?.Invoke();
     }
 }
